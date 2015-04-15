@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<div class="container">
+    <video id="walking" autoplay loop src="{{ site.assets }}walking.mp4" type="video/mp4" style="visibility: visible;">
+    </video>
+    <video id="digging" autoplay loop src="{{ site.assets }}digging.mp4" type="video/mp4" style="visibility: hidden;">
+    </video>
+</div>
+<div class="overlay" onclick="doEdit();">
+</div>
+<div id="info" class="overlay" onclick="toggleDisplay('info');" style="display: none;">
+    <pre>{{ site.description }}</pre>
+</div>

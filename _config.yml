@@ -1,0 +1,24 @@
+# Site settings
+title: Towards Inherent Meaning .com
+email: hello@paulwrankin.com
+description: |
+  &ldquo;Towards Inherent Meaning&rdquo;
+  Paul W. Rankin
+  2015
+  web and video (3 min 45 sec)
+
+  produced by Paul W. Rankin and Lawrence English
+  featuring Kathryn Walsh and Jill Rankin
+
+  f - toggle fullscreen
+  ? - show this description
+  space - switch scene
+url: "http://towardsinherentmeaning.com"
+assets: "/assets/"
+ga_id: "UA-61824324-2"
+
+# Build settings
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
