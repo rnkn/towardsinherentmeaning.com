@@ -1,5 +1,5 @@
 # Site settings
-title: Towards Inherent Meaning .com
+title: Towards Inherent Meaning
 email: hello@paulwrankin.com
 description: |
   &ldquo;Towards Inherent Meaning&rdquo;
@@ -8,17 +8,18 @@ description: |
   web and video (3 min 45 sec)
 
   produced by Paul W. Rankin and Lawrence English
+  cinematography by Francis Thompson
   featuring Kathryn Walsh and Jill Rankin
+  assistant Jackson Scott
 
-  f - toggle fullscreen
+  f - fullscreen
   ? - show this description
   space - switch scene
-url: "http://towardsinherentmeaning.com"
-assets: "/assets/"
-ga_id: "UA-61824324-2"
+url: http://towardsinherentmeaning.com
+assets: /assets/
+ga_id: UA-61824324-2
 
 # Build settings
-markdown: kramdown
 exclude:
   - Gemfile
   - Gemfile.lock
