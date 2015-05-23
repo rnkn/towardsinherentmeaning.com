@@ -1,5 +1,5 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+#
 ---
 @charset "utf-8";
 
@@ -11,44 +11,85 @@
     $prop: $val;
 }
 
-body {
+html {
     margin: 0;
+    padding: 0;
+    border: 0;
 }
 
-.container {
-    position: relative;
-    height: 100vh;
+body {
+    @extend html;
+    background-color: black;
+    overflow: hidden;
 }
 
-.overlay {
-    width: 100%;
-    height: 100%;
+canvas {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    p {
+        color: white;
+    }
 }
 
 video {
+    display: none;
+}
+
+figure {
     @include prefix(transform, translateX(-50%) translateY(-50%));
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 30%;
+    max-width: 90%;
     width: auto;
     height: auto;
+    margin: 0;
+    padding: 0;
+    background: white;
+    pre {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@-webkit-keyframes spinner {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+@-moz-keyframes spinner {
+    from { background-position: 0px 0px; }
+    to { background-position: -500px; }
+}
+
+@keyframes spinner {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+.spinner {
+    @include prefix(transform, translateX(-50%) translateY(-50%));
+    @include prefix(animation, spinner 2s steps(20, end) infinite);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    background-image: url("{{ site.assets }}spinner.png");
+    background-size: 1900% 100%;
 }
 
 #info {
-    pre {
-        @include prefix(transform, translateX(-50%) translateY(-50%));
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 30%;
-        max-width: 90%;
-        width: auto;
-        height: auto;
-        background: white;
-    }
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
