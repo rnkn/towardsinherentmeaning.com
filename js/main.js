@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         changeVideo();
     }, false);
 
-    canvas.addEventListener("dbclick", function() {
+    canvas.addEventListener("dblclick", function() {
         screenfull.toggle();
     }, false);
 
