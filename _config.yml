@@ -16,7 +16,8 @@ description: |
   ? - show this description
   space - switch scene
 url: http://towardsinherentmeaning.com
-assets: /assets/
+# assets: /assets/
+assets: https://s3.amazonaws.com/pwr2-towardsinherentmeaning-1f948322/
 ga_id: UA-61824324-2
 
 # Build settings
