@@ -2,6 +2,8 @@
 #
 ---
 document.addEventListener("DOMContentLoaded", function() {
+    window.videoArray = [];
+    window.videoIndex = 0;
     var spinner = document.getElementsByClassName("spinner")[0];
 
     var canvas = document.getElementsByTagName("canvas")[0];
@@ -9,11 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var info = document.getElementById("info");
 
-    window.videoArray = [];
-    window.videoIndex = 0;
-
-    window.videoArray.push(createVideo("walking.mp4", true, true));
-    window.videoArray.push(createVideo("digging.mp4", true, true));
+    window.videoArray.push(createVideo("walking.mp4", true, false, true));
+    window.videoArray.push(createVideo("digging.mp4", true, false, true));
 
     window.videoArray[window.videoIndex].addEventListener("play", function() {
         spinner.style.display = "none";
@@ -33,11 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }, false);
 }, false);
 
-function createVideo(source, loop, autoplay) {
+function createVideo(source, preload, autoplay, loop) {
     var e = document.createElement("video");
     e.src = "{{ site.assets }}" + source;
-    e.loop = loop;
+    e.preload = preload;
     e.autoplay = autoplay;
+    e.loop = loop;
     return e;
 }
 
