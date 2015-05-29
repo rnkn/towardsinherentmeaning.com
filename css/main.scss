@@ -82,7 +82,7 @@ figure {
     left: 50%;
     width: 25px;
     height: 25px;
-    background-image: url("{{ site.assets }}spinner.png");
+    background-image: url("{{ 'spinner.png' | prepend: site.assets }}");
     background-size: 1900% 100%;
 }
 
