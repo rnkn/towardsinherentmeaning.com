@@ -2,8 +2,12 @@
 #
 ---
 document.addEventListener("DOMContentLoaded", function() {
+    window.birth = Date.parse("Wed May 27 14:13:56 2015 +1000");
     window.videoArray = [];
     window.videoIndex = 0;
+    var videoReady = 0;
+    var videoTotal = 2;
+
     var spinner = document.getElementsByClassName("spinner")[0];
 
     var canvas = document.getElementsByTagName("canvas")[0];
@@ -14,10 +18,21 @@ document.addEventListener("DOMContentLoaded", function() {
     window.videoArray.push(createVideo("walking.mp4", true, false, true));
     window.videoArray.push(createVideo("digging.mp4", true, false, true));
 
-    window.videoArray[window.videoIndex].addEventListener("play", function() {
-        spinner.style.display = "none";
-        window.setInterval(drawCanvas, 40, canvas, context);
-    }, false);
+    window.videoArray.forEach(function(e, i, a) {
+        e.addEventListener("loadedmetadata", function() {
+            syncVideo(this);
+        }, false);
+        e.addEventListener("canplaythrough", function() {
+            videoReady++;
+            if (videoReady == videoTotal) {
+                spinner.style.display = "none";
+                window.videoArray.forEach(function(e, i, a) {
+                    e.play();
+                });
+                window.setInterval(drawCanvas, 40, canvas, context);
+            }
+        }, false);
+    });
 
     canvas.addEventListener("click", function() {
         changeVideo();
@@ -46,6 +61,11 @@ function changeVideo() {
     if (window.videoIndex == window.videoArray.length) {
         window.videoIndex = 0;
     }
+}
+
+function syncVideo(video) {
+    var t = Date.now();
+    video.currentTime = (t - window.birth) / 1000 % video.duration;
 }
 
 function drawCanvas(canvas, context) {
