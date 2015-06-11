@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
     window.videoArray.push(createVideo("digging.mp4", true, false, true));
 
     window.videoArray.forEach(function(e, i, a) {
-        e.addEventListener("canplaythrough", function() {
+        e.addEventListener("loadedmetadata", function() {
             syncVideo(this);
+        }, false);
+        e.addEventListener("canplaythrough", function() {
             videoReady++;
             if (videoReady == videoTotal) {
                 spinner.style.display = "none";
