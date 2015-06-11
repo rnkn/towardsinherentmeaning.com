@@ -19,13 +19,17 @@ document.addEventListener("DOMContentLoaded", function() {
     window.videoArray.push(createVideo("digging.mp4", true, false, true));
 
     window.videoArray.forEach(function(e, i, a) {
-        e.addEventListener("loadedmetadata", function() {
-            syncVideo(this);
-        }, false);
         e.addEventListener("canplaythrough", function() {
+            syncVideo(this);
             videoReady++;
             if (videoReady == videoTotal) {
                 spinner.style.display = "none";
+                canvas.addEventListener("click", function() {
+                    changeVideo();
+                }, false);
+                canvas.addEventListener("dblclick", function() {
+                    screenfull.toggle();
+                }, false);
                 window.videoArray.forEach(function(e, i, a) {
                     e.play();
                 });
@@ -33,14 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }, false);
     });
-
-    canvas.addEventListener("click", function() {
-        changeVideo();
-    }, false);
-
-    canvas.addEventListener("dblclick", function() {
-        screenfull.toggle();
-    }, false);
 
     info.addEventListener("click", function() {
         toggleDisplay("info");
